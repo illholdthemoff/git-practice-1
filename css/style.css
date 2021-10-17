@@ -1,0 +1,286 @@
+/* ./////   DEFAULT DISPLAY PROPERTY /////*/
+/* Block == Always starts a new line and takes full width
+  Inline == Does not start new line, only takes space that is needed
+  Elements will have one of these two by default, they can of course be changed to the other */
+
+/* .block {
+  background: blue;
+  color: white;
+  display: inline;
+}
+
+.inline {
+  background: red;
+  color: white;
+  display: block; 
+}*/
+
+/* ./////   HORIZONTAL CENTERING ///// */
+/* centering with block elements by default will center the content relative to the element instead of relative to the page IE a paragraph tag taking up the entire width of the page with just 5 characters in the very center. Using margin: auto as shown below allows us to basically snip the extra shit off the block element and center it properly anyway. */
+
+/* body {
+  text-align: center;  will work just fine for inline elements, as they only take up the space around their content. 
+} */
+
+/* .block {
+  background: blue;
+  color: white;
+  width: 150px;
+  margin: 0 auto;  Allows you to center a block element on the page simialr to how an inline element will center/
+   margin-left: auto == will push the element to the right, and margin-right auto will push to left. if both are used it will simply center the element 
+}
+
+.inline {
+  background: red;
+  color: white;
+} */
+
+/* NOTE: 
+      Block: Top Bottom Margin Respected by browser
+      Inline: Top Bottom margin not respected by browser */
+
+/* ./////  Mobile Navbar ///// */
+/* ./////  list-style-type:property ///// */
+/* ./////   descendant selectors  ///// */
+
+/* div {
+  background: blue;
+  color: white;
+  padding: 20px;
+  margin: 20px;
+}
+
+* {
+  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+ul li    used to select the child of a given element. Not unique to lists. Can be used for many things, example for the font, or the list style  {
+  /* 
+   
+
+  list-style: armenian;  used to change the style of the bullet points on an ul. Can be things from roman numerals, armenian text lol or set to none for just the list with no dots or whatever 
+} */
+
+/* ul li a  you can even select children of children of a given element. Useful in this case if you only want to style the links inside of a list or something like that.  {
+  text-decoration: none;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+  background: #222;
+  color: #f15025;
+   padding: 5px;
+  margin: 10px 10px;  As you can see, <a> is an inline element, and with these enabled the various links will overlap each other. This is an example of the browser not respecting the top bottom margin of inline elements 
+  display: block;
+  padding: 10px 10px;  now that it is a block element, the browser respects the margins 
+} */
+
+/* ./////   INLINE BLOCK ///// */
+/*          Essentially is some weird hybrid where you can have an inline element but still be able to have upper and lower margins respected by the browser. */
+/* 
+a {
+  font-size: 60px;
+  background: red;
+  margin: 10px;
+  display: inline-block;
+} */
+
+/* ./////   BOX SIZING: border-box /////          about.html */
+/* basically forces an element, padding and all, to conform with the element's stated width/height by placing the padding more inside potentially into the content. Otherwise when you add padding, it will technically grow the element past the stated height/width. For example, wihtout this, technically box-1 would be 240x240 instead of 200x200. This can mess up content inside the box sometimes though, so use wisely */
+
+.box-1,
+.box-2,
+.box-3 {
+  width: 200px;
+  height: 200px;
+} /* if you want to create classes that are mostly alike with only a few differences, you can do it this way and put their commonalities in there, and then put the differences in each of their own classes. */
+
+.box-1 {
+  background: red;
+  color: white;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.box-2 {
+  background: green;
+  color: black;
+}
+
+.box-3 {
+  background: gray;
+  color: purple;
+  padding: 20px;
+}
+
+/* .///// invisible modifiers ///// */
+/* 
+display: none;           stops the page from even displaying the element, gets rid of its spacing                  and everything.undetectable,  with the others the                      s                        space wheere they would be shown is still there
+opacity: 0;              changes how opaque the element is. The higher the value the more visible
+visibility: hidden;      same as opacity when it is set to 0. Just hides it
+*/
+
+/* div {
+  background: blue;
+  margin: 10px;
+  color: white;
+}
+
+.none {
+  display: none;
+}
+
+.opacity {
+  opacity: 1;
+}
+
+.opacity-5 {
+  opacity: 0.5;
+}
+
+.opacity-0 {
+  opacity: 0;
+}
+
+.visibility {
+  visibility: hidden;
+} */
+
+/* ./////   BACKGROUND PROPERTIES ////// */
+/* by default, the css in background-image will set the image to repeat if it is not big enough to cover the element. So with small images you will get tiling etc */
+/* no-repeat on the background will cause the image to display only once, without stretching */
+/* repeat-x simply repeats the image along the x axis only*/
+/* repeat-y is the same but with y axis */
+/* space repeats with a bit of space in between the image copies */
+/* round repeats, but truncates any extra half images at the end and stretches the rest to compensate. So if an element has space for 2.5 images, and repeat would display 2 and a half normally, round would instead display 2 images stretched out a bit. */
+
+/* ./////  background-size ///// */
+/* background-size: cover will always make the image fill the div or element, regardless of the size. It will achieve this by zooming into the image as the div gets smaller */
+/* background-size: contain will make sure the entire image, at its natural ratio is displayed. If this is not possible within the div, for example a narrow but tall image on a wide but short div, it will repeat the image until it fills the div, including partially cut off image. If you set background-repeat to none, it will only show one image, at its normal ratio*/
+
+/* ./////   background-position /////  ------------------------------------------------------------------------------ GO OVER THIS AGAIN*/
+/* this will determine the positioning of the background image within the div */
+/* directionals (top bottom center etc) will place the image in the respective area */
+/* when used with background-size:cover it will essentially base the zooming in on the CENTER of the image, generally making it smoother*/
+/* can also be done with numbers, for instance with percentages it will position the image along the various axes of the div based on the percentage given */
+
+/* .///// background-attachment ///// */
+/* fixed == background is fixed while everything else in the div moves. For exmple if you are scrolling down, text on the page will move but the background will not. a parallax effect */
+
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+div {
+  min-height: 100vh;
+  color: green;
+  font-size: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.big-img {
+  background: url("./big.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.small-img {
+  border: 2px solid red;
+  background: url(./img/ppddotapit.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.folder-img {
+  background: url("./big.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+} */
+
+/* .///// GRADIENTS /////         contact.html*/
+/* default flow of gradients is from top to bottom */
+/* direction of flow can be changed by the keyword to at the beginning, from directions like top bottom etc to degrees */
+/* you can add any number of colors to the gradient */
+/* rgba is typically the most useful to add for these for the sake of transparency manipulation through gradients. */
+
+/* body {
+  display: flex;
+}
+
+div {
+  width: 150px;
+  height: 150px;
+  margin: 5px;
+}
+
+.one {
+  background: linear-gradient(red, green);
+}
+
+.two {
+  background: linear-gradient(to top, red, green);
+}
+
+.three {
+  background: linear-gradient(150deg, red, green);
+}
+
+.four {
+  background: linear-gradient(to top left, red, green);
+}
+
+.five {
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9));
+}
+
+.six {
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9));
+} */
+
+/* LINEAR GRADIENT OVERLAY ON BACKGROUND below */
+/* GOOD RESOURCE FOR GRADIENT MAKING == https://www.colorzilla.com/gradient-editor/ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+div {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 60px;
+  color: orange;
+}
+
+.banner {
+  background: url("./big.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.header {
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5)),
+    url("./big.jpg") center/cover no-repeat fixed; /* shorter way to write the above. center and cover are the only two that must be positioned that way */
+}
